@@ -12,8 +12,6 @@ public class Main {
         Family family1=new Family(mother1,father1,pet1);
         family1.addchild(child1);
         System.out.println(child1.getFamily());
-        //niye 2 classdan extend olmur
-        //interface abstraction ferq
-        //parseint ve valueof
+
     }
 }
