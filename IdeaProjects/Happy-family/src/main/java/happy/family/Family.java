@@ -75,15 +75,16 @@ public class Family {
     }
 
     public boolean deletechild(int index) {
-        if (children == null || children.length < 1 || index < 0 || index >= children.length - 1) {
+        if (children == null || children.length < 1 || index < 0 || index >= children.length ) {
             return false;
         }
         Human[] newchildren = new Human[children.length - 1];
         int newindex = 0;
         for (int i = 0; i < newchildren.length; i++) {
-            if (i != index + 1) {
-                newchildren[newindex++] = newchildren[i];
+            if (i == index) {
+                children[i].setFamily(null);
             }
+            newchildren[newindex++]=children[i];
         }
         children = newchildren;
         return true;
@@ -101,18 +102,15 @@ public class Family {
         return Objects.equals(mother, family1.mother) && Objects.equals(father, family1.father) && Objects.deepEquals(children, family1.children) && Objects.equals(pet, family1.pet) && Objects.equals(family, family1.family);
     }
 
-    @Override
-    protected void finalize() throws Throwable {
-        super.finalize();
-    }
+
 
     @Override
     public String toString() {
-        return "Family{" +
-               "mother=" + mother +
-               ", father=" + father +
-               ", children=" + Arrays.toString(children) +
-               ", pet=" + pet +
+        return "Family{\n" +
+               "mother=" + mother + "\n"+
+               ", father=" + father + "\n" +
+               ", children=" + Arrays.toString(children) + "\n" +
+               ", pet=" + pet +"\n"+
                '}';
     }
 }
